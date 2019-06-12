@@ -1,0 +1,30 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {
+    "quotemark": [
+      true,
+      "single"
+    ]
+  },
+  "rules": {
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "no-console": false,
+    "await-promise": true,
+    "semicolon": true,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case"
+    ],
+    "arrow-parens": false
+  },
+  "rulesDirectory": []
+}

@@ -1,0 +1,44 @@
+{
+  "name": "@tsb/svgcode",
+  "version": "0.4.1",
+  "description": "This module is part of the CityLAB plotter project. Totally based on https://github.com/piLeoni/svgcode",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p .",
+    "watch": "tsc -p . -w",
+    "prepare": "npm run build"
+  },
+  "keywords": [],
+  "author": "Fabian Morón Zirfas",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^2.5.0",
+    "canvg": "^2.0.0",
+    "gcanvas": "0.0.37",
+    "jsdom": "^15.1.1",
+    "xmldom": "^0.1.27"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.3",
+    "cz-conventional-changelog": "^2.1.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/technologiestiftung/svgcode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/technologiestiftung/svgcode/issues"
+  },
+  "homepage": "https://github.com/technologiestiftung/svgcode#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
