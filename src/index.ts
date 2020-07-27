@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import canvg from "canvg";
 // import fs, { PathLike } from 'fs';
 import Gcanvas from "gcanvas";
@@ -71,6 +70,9 @@ export const svgcode: (
       return this;
     },
     generateGcode() {
+      if (this.svgFile === undefined) {
+        throw new Error("this.svgFile");
+      }
       canvg(this.gctx.canvas, this.svgFile);
       return this;
     },
