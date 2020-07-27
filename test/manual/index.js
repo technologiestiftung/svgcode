@@ -1,14 +1,18 @@
-const { svgcode } = require('../../dist');
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { svgcode } = require("../../dist");
 
-const path = require('path');
-const fs = require('fs');
-const meow = require('meow');
+const path = require("path");
+const fs = require("fs");
+const meow = require("meow");
 
-const cli = meow(`
+const cli = meow(
+  `
   Usage: node index.js relative/input/path/to/file.svg relative/output/path/file.gc
 
   Will output next to the srcfile with .gz extension.
-`, {});
+`,
+  {}
+);
 
 if (cli.input.length === 0) {
   cli.showHelp();
@@ -22,15 +26,14 @@ const opts = {
 
 const inFile = path.resolve(process.cwd(), cli.input[0]);
 let outFile = undefined;
-if(cli.input[1] === undefined){
-  outFile = `${inFile.replace('.svg', '.gc')}`;
-
-}else{
+if (cli.input[1] === undefined) {
+  outFile = `${inFile.replace(".svg", ".gc")}`;
+} else {
   outFile = path.resolve(process.cwd(), cli.input[1]);
 }
 // const base = path.basename(inFile);
 // console.log(outFile);
-const svg = fs.readFileSync(inFile, 'utf8');
+const svg = fs.readFileSync(inFile, "utf8");
 const gcode = svgcode()
   // .loadFile(inFile)
   .setSvg(svg)
@@ -40,10 +43,9 @@ const gcode = svgcode()
   .getGcode();
 
 console.log(gcode);
-fs.writeFile(outFile, gcode.join('\n'), 'utf8', (err) => {
+fs.writeFile(outFile, gcode.join("\n"), "utf8", (err) => {
   if (err) {
     throw err;
   }
   // console.log(data);
-
 });

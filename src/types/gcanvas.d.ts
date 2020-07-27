@@ -1,1 +1,1 @@
-declare module 'gcanvas';
+declare module "gcanvas";
