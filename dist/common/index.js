@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GCodeCommands = void 0;
 var GCodeCommands;
 (function (GCodeCommands) {
     GCodeCommands["lift"] = "G0 Z10";

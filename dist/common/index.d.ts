@@ -1,4 +1,3 @@
-import { ISvgcode } from './index';
 export interface IObject {
     [key: string]: any;
 }
@@ -7,7 +6,7 @@ export interface ICanvgDefaultOptions {
     precision?: number;
     ramping?: boolean;
     toolDiameter?: number;
-    unit?: 'mm' | 'inch';
+    unit?: "mm" | "inch";
     map?: string;
     top?: number;
     doFloor?: boolean;

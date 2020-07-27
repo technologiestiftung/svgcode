@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.svgcode = void 0;
 const canvg_1 = __importDefault(require("canvg"));
 // import fs, { PathLike } from 'fs';
 const gcanvas_1 = __importDefault(require("gcanvas"));
