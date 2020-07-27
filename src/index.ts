@@ -1,8 +1,14 @@
-import canvg from 'canvg';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import canvg from "canvg";
 // import fs, { PathLike } from 'fs';
-import Gcanvas from 'gcanvas';
-import { Stream } from 'stream';
-import { GCodeCommands, ICanvgDefaultOptions, IObject, ISvgcode } from './common';
+import Gcanvas from "gcanvas";
+import { Stream } from "stream";
+import {
+  GCodeCommands,
+  ICanvgDefaultOptions,
+  IObject,
+  ISvgcode,
+} from "./common";
 
 // totally ripped from
 // https://github.com/piLeoni/svgcode
@@ -15,13 +21,14 @@ import { GCodeCommands, ICanvgDefaultOptions, IObject, ISvgcode } from './common
 //   toolDiameter?: number;
 // }
 // tslint:disable-next-line: prefer-const
-let doRmZends: boolean = true;
+const doRmZends = true;
 
-export const svgcode = (
-  doFloor: boolean = true,
-  doDedupe: boolean = true,
-  feedRate: number = 3125,
-  canvgOpts?: ICanvgDefaultOptions) => {
+export const svgcode: (
+  doFloor: boolean,
+  doDedupe: boolean,
+  feedRate: number,
+  canvgOpts?: ICanvgDefaultOptions
+) => ISvgcode = (doFloor, doDedupe, feedRate, canvgOpts) => {
   const output2Array: (target: string[]) => any = (target) => {
     return {
       write(cmd: any) {
@@ -31,12 +38,12 @@ export const svgcode = (
   };
   const gcanvDefaultOptions: ICanvgDefaultOptions = {
     depth: 10,
-    map: 'xyz',
+    map: "xyz",
     precision: 1,
     ramping: false,
     toolDiameter: 0,
     top: -10,
-    unit: 'mm',
+    unit: "mm",
   };
 
   const opts = Object.assign(gcanvDefaultOptions, canvgOpts);
@@ -58,7 +65,7 @@ export const svgcode = (
       return this;
     },
     setOptions(input: IObject) {
-      Object.keys(input).forEach(opt => {
+      Object.keys(input).forEach((opt) => {
         this.gctx[opt] = input[opt];
       });
       return this;
@@ -68,7 +75,7 @@ export const svgcode = (
       return this;
     },
     printGcode() {
-      process.stdout.write(this.gCode.join('\n'));
+      process.stdout.write(this.gCode.join("\n"));
     },
     getGcode() {
       this.gCode.splice(3, 0, GCodeCommands.lift); // insert a lift at start after the first three elements
@@ -77,20 +84,23 @@ export const svgcode = (
       this.gCode.push(GCodeCommands.goHome); // Go Home again
       // now we patch some pen down so we don't hit the switch
       this.gCode.forEach((ele, i) => {
-        this.gCode[i] = ele.replace('Z0', 'Z3');
+        this.gCode[i] = ele.replace("Z0", "Z3");
       });
       // this.gCode.forEach((ele, i, arr) => {
       //   arr[i] = ele.replace('G1 Z3', 'G0 Z10');
       // });
       if (doFloor !== undefined && doFloor === true) {
         this.gCode.forEach((ele, i, arr) => {
-          arr[i] = ele.replace(/([X,Y,Z,x,y,z]\d{1,6})([.]\d{1,6})/g, '$1');
+          arr[i] = ele.replace(/([X,Y,Z,x,y,z]\d{1,6})([.]\d{1,6})/g, "$1");
         });
       }
       if (doRmZends === true) {
-        const reg = doFloor === true ? /([Y,y]\d{1,4})\ [Z]\d$/g : /([Y,y]\d{1,6}[.]\d{0,10})\ [Z]\d$/g;
+        const reg =
+          doFloor === true
+            ? /([Y,y]\d{1,4}) [Z]\d$/g
+            : /([Y,y]\d{1,6}[.]\d{0,10}) [Z]\d$/g;
         this.gCode.forEach((ele, i, arr) => {
-          arr[i] = ele.replace(reg, '$1');
+          arr[i] = ele.replace(reg, "$1");
         });
       }
 
@@ -112,10 +122,10 @@ export const svgcode = (
       }
       // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < this.gCode.length; i++) {
-        if (this.gCode[i].startsWith('G0 X') === true) {
+        if (this.gCode[i].startsWith("G0 X") === true) {
           // console.log('Got a G0 without lift');
           if (i > 0) {
-            this.gCode.splice(i, 0, 'G0 Z10');
+            this.gCode.splice(i, 0, "G0 Z10");
             i++;
           }
         }

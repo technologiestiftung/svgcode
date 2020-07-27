@@ -4,7 +4,7 @@
   "description": "This module is part of the CityLAB plotter project. Totally based on https://github.com/piLeoni/svgcode",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "inpyjamas-scripts test",
     "build": "tsc -p .",
     "watch": "tsc -p . -w",
     "prepare": "npm run build"
@@ -20,10 +20,9 @@
     "xmldom": "^0.1.27"
   },
   "devDependencies": {
-    "@types/node": "12.0.3",
-    "cz-conventional-changelog": "3.2.0",
-    "tslint": "5.16.0",
-    "typescript": "3.9.7"
+    "@inpyjamas/scripts": "0.1.5-alpha",
+    "@types/node": "12.12.53",
+    "cz-conventional-changelog": "3.2.0"
   },
   "directories": {
     "test": "test"
