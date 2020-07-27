@@ -7,7 +7,7 @@
     "test": "inpyjamas-scripts test",
     "build": "tsc -p .",
     "watch": "tsc -p . -w",
-    "prepare": "npm run build"
+    "prepack": "npm run build"
   },
   "keywords": [],
   "author": "Fabian Morón Zirfas",
@@ -16,13 +16,14 @@
     "canvas": "^2.5.0",
     "canvg": "^2.0.0",
     "gcanvas": "0.0.37",
-    "jsdom": "^15.1.1",
+    "jsdom": "15.2.1",
     "xmldom": "^0.1.27"
   },
   "devDependencies": {
     "@inpyjamas/scripts": "0.1.5-alpha",
     "@types/node": "12.12.53",
-    "cz-conventional-changelog": "3.2.0"
+    "cz-conventional-changelog": "3.2.0",
+    "typescript": "3.9.7"
   },
   "directories": {
     "test": "test"
