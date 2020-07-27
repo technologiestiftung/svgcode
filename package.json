@@ -1,6 +1,6 @@
 {
   "name": "@tsb/svgcode",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "This module is part of the CityLAB plotter project. Totally based on https://github.com/piLeoni/svgcode",
   "main": "dist/index.js",
   "scripts": {
