@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.7.0",
-    "canvg": "2.0.0",
+    "canvg": "3.0.7",
     "gcanvas": "0.0.37",
     "jsdom": "16.5.3",
     "xmldom": "0.6.0"
