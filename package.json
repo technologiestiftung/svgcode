@@ -21,9 +21,9 @@
   },
   "devDependencies": {
     "@inpyjamas/scripts": "0.1.5-alpha",
-    "@types/node": "12.12.54",
-    "cz-conventional-changelog": "3.2.0",
-    "typescript": "4.0.5"
+    "@types/node": "12.20.13",
+    "cz-conventional-changelog": "3.3.0",
+    "typescript": "4.2.4"
   },
   "directories": {
     "test": "test"
